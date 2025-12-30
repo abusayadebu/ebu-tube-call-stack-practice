@@ -57,7 +57,11 @@ const displayVideos = (videos) => {
     ${video.authors[0].verified == true 
         ? `<img class="w-7 object-cover" src="https://img.icons8.com/?size=100&id=123575&format=png"></img>` : ""}
     </div>
-    <p>${video.others.views} views</p>
+
+        <div class="flex gap-2 items-center"> 
+        <p>${video.others.views} views</p>
+        <button onclick="loadVideoDetails('${video.video_id}')" class="btn btn-sm bg-red-500 text-white text-xs">Details</button>
+    </div>
     </div>
   </div>
         `
@@ -67,4 +71,18 @@ const displayVideos = (videos) => {
 
 
     })
+}
+
+// displayVideoDetails
+const displayVideoDetails = (video) =>{
+    const modalContainer = document.getElementById("modal-content");
+    // show modal
+    document.getElementById("modal-data").click()
+    modalContainer.innerHTML = 
+    `<div> 
+        <img class="w-full" src= ${video.thumbnail} />
+        <h2 class="font-bold text-xl">${video.title}</h2>
+        <p class="text-justify text-amber-900">${video.description}</p>
+    </div>
+    `
 }
