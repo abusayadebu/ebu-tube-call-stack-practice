@@ -7,7 +7,7 @@ const displayCategories = (categories)=> {
         // create button in the div- tht's why first take a div
         const buttonContainer = document.createElement("div");
         buttonContainer.innerHTML = 
-        ` <button onclick="loadCategoryBtn(${item.category_id})"  class="btn"> ${item.category} </button>
+        ` <button id="btn-${item.category_id}" onclick="loadCategoryBtn(${item.category_id})"  class="btn category-btn"> ${item.category} </button>
         `
 
         // append the buttonContainer to the categoryContainer to show in UI-
@@ -19,6 +19,7 @@ const displayCategories = (categories)=> {
 
 // displayVideos
 const displayVideos = (videos) => {
+
     // do empty video container when category btn clicked
     const videoContainer = document.getElementById("videos-container")
     videoContainer.innerHTML = "";

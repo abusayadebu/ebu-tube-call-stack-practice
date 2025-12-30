@@ -20,7 +20,15 @@ const loadVideos = () => {
 const loadCategoryBtn = (id) => {
     fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
     .then((res) => res.json())
-    .then((data) => displayVideos(data.category))
+    .then((data) => {
+        // remove active class
+        removeActiveClass()
+        
+        // button catch here--
+        const activeBtn = document.getElementById(`btn-${id}`)
+        activeBtn.classList.add("bg-red-500", "text-white")
+        displayVideos(data.category)
+    })
     .then((error) => console.log(error))
 }
 
