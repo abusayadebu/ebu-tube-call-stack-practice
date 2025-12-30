@@ -1,7 +1,6 @@
 // all fetching data load will be here
 
 // loadCategories here
-
 const loadCategories = () => {
     fetch("https://openapi.programming-hero.com/api/phero-tube/categories")
     .then((res) => res.json())
@@ -9,5 +8,22 @@ const loadCategories = () => {
     .then((error) => console.log(error));
 }
 
+// loadVideos 
+const loadVideos = () => {
+    fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+    .then((res) => res.json())
+    .then((data) => displayVideos(data.videos))
+    .then((error) => console.log(error));
+}
+
+
+
+
+
+
+
+
+// function call always in the last
 loadCategories();
+loadVideos();
 
