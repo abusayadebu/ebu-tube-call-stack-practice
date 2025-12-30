@@ -7,10 +7,9 @@ const displayCategories = (categories)=> {
         // create button in the div- tht's why first take a div
         const buttonContainer = document.createElement("div");
         buttonContainer.innerHTML = 
-        ` <button class="btn">
-            ${item.category} 
-            </button>
+        ` <button onclick="loadCategoryBtn(${item.category_id})"  class="btn"> ${item.category} </button>
         `
+
         // append the buttonContainer to the categoryContainer to show in UI-
         const categoryContainer = document.getElementById("category-container")
         categoryContainer.append(buttonContainer);
@@ -20,6 +19,25 @@ const displayCategories = (categories)=> {
 
 // displayVideos
 const displayVideos = (videos) => {
+    // do empty video container when category btn clicked
+    const videoContainer = document.getElementById("videos-container")
+    videoContainer.innerHTML = "";
+
+    // when empty a container then show something
+    if(videos.length === 0){
+        videoContainer.classList.remove("grid");
+        videoContainer.innerHTML = 
+        `<div class="w-full h-[500px] mx-auto flex flex-col gap-5 text-3xl font-bold justify-center items-center">
+            <img src="./assets/Icon.png" />
+            <h2> NO CONTENT HERE </h2>
+        </div>
+        `
+    }
+    else{
+        videoContainer.classList.add("grid")
+    }
+
+// then take evry videos and show
     videos.forEach((video) => {
         const card = document.createElement("div")
         card.innerHTML = 
