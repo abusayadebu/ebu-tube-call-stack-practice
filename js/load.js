@@ -9,8 +9,8 @@ const loadCategories = () => {
 }
 
 // loadVideos 
-const loadVideos = () => {
-    fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+const loadVideos = (searchText = "") => {
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchText}`)
     .then((res) => res.json())
     .then((data) => displayVideos(data.videos))
     .then((error) => console.log(error));
@@ -44,6 +44,10 @@ const loadVideoDetails = (videoId) => {
 
 
 
+// search input 
+const searchInput = document.getElementById("search-input").addEventListener("keyup", function(e){
+    loadVideos(e.target.value);
+})
 
 // function call always in the last
 loadCategories();
